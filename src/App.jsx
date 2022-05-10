@@ -1,14 +1,15 @@
-import './App.css';
-import Home from './pages/Home';
+import { Suspense } from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Home from './pages/HomePage/HomePage';
 
 function App() {
   return (
-    <>
-      <div>
+    <BrowserRouter>
+    <Suspense>
       <Home/> 
-      </div>
-    </>
-      );
+    </Suspense>
+    </BrowserRouter>
+  );
 }
 
 export default App;

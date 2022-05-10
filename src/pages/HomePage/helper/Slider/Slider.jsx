@@ -2,16 +2,11 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-import slider1 from '../assets/slider1.jpg'
-import slider2 from '../assets/slider2.jpg'
-import slider3 from '../assets/slider3.jpg'
-const Container=styled.div`
-    width:100%;
-    height:100vh;
-    display:flex;
-    position:relative;
-    overflow:hidden;
-`
+import slider1 from '../../../../assets/img/slider1.jpg';
+import slider2 from '../../../../assets/img/slider2.jpg';
+import slider3 from '../../../../assets/img/slider3.jpg';
+import './Slider.scss';
+
 const Arrow=styled.div`
     color:white;
     width:50px;
@@ -38,13 +33,7 @@ const Wrapper=styled.div`
     transition:all 1.5s ease
     transform:translateX(${(props)=>props.slideIndex * -100}vw);
 `;
-const Slide=styled.div`
-    display:flex;
-    align-items:center;
-    width:100vw;
-    height:100vh;
-    background-color:black;
-`
+
 const ImgContainer=styled.div`
     flex:1;
     height:100%;
@@ -89,22 +78,20 @@ const Button=styled.button`
     background-image:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,0)),linear-gradient(101deg,#ff3998,#ff8139)
 `;
 const Slider = () => {
-    const [slideIndex,setSlideIndex]=useState(0);   
-    const  handleClick=(direction)=>{
-        if(direction==='left'){
-            setSlideIndex(slideIndex>0?slideIndex-1:2);
-        }else{
-            setSlideIndex(slideIndex<2?slideIndex+1:0);
-        }
+    const [slideIndex, setSlideIndex] = useState(0);
 
+    const handleClick = (direction) => {
+        if(direction==='left') setSlideIndex(slideIndex>0?slideIndex-1:2);
+        else setSlideIndex(slideIndex<2?slideIndex+1:0);
     }
+
   return (
-    <Container>
-        <Arrow direction='left' onclick={()=>handleClick("left")}>
+    <div className="container">
+        <div className="arrow" direction='left' onClick={()=>handleClick("left")}>
             <ArrowBackIosNewIcon/>
-        </Arrow>
-        <Wrapper slideIndex={slideIndex}>
-            <Slide>
+        </div>
+        <div className="wrapper" slideIndex={slideIndex}>
+            <div className="slide">
             <ImgContainer>
                 <Image src={slider1}></Image>
             </ImgContainer>
@@ -115,8 +102,8 @@ const Slider = () => {
                 </Infoslide>
                 <Button>Shop Now</Button>
             </InfoContainer>
-            </Slide>
-            <Slide>
+            </div>
+            <div className="slide">
             <ImgContainer>
                 <Image src={slider1}></Image>
             </ImgContainer>
@@ -127,8 +114,8 @@ const Slider = () => {
                 </Infoslide>
                 <Button>Shop Now</Button>
             </InfoContainer>
-            </Slide>
-            <Slide>
+            </div>
+            <div className="slide">
             <ImgContainer>
                 <Image src={slider1}></Image>
             </ImgContainer>
@@ -139,12 +126,12 @@ const Slider = () => {
                 </Infoslide>
                 <Button>Shop Now</Button>
             </InfoContainer>
-            </Slide>
-        </Wrapper>
-        <Arrow direction='right' onclick={()=>handleClick("right")}>
+            </div>
+        </div>
+        <Arrow direction='right' onClick={()=>handleClick("right")}>
             <ArrowForwardIosIcon/>
         </Arrow>
-    </Container>
+    </div>
   )
 }
 

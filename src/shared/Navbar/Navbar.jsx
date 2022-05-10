@@ -1,10 +1,9 @@
 import React from 'react'
 import styled from 'styled-components' 
 import SearchIcon from '@mui/icons-material/Search';
-import logo from '../assets/neonlogo1.png'
+import logo from '../../assets/img/neonlogo1.png'
 import Badge from '@mui/material/Badge';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-
 
 const Container=styled.div`
     height :130px;
